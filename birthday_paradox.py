@@ -1,7 +1,25 @@
 import datetime, random
 
+# Set up a tuple of month names in order:
+MONTHS = (
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+)
 
-def get_birthday(number_of_birthdays):
+
+def get_birthday(number_of_birthdays:int):
+    """enter an integer for the amount of birthdays to be simulated"""
+    
     """Returns a list of number random date objects for birthdays."""
     birthdays = []
     for i in range(number_of_birthdays):
@@ -33,33 +51,18 @@ print("""'Birthday Paradox, by Al Sweigart al@inventwithpython.com
  This program does a Monte Carlo simulation (that is, repeated random
  simulations) to explore this concept.
  (It's not actually a paradox, it's just a surprising result.)""")
-# Set up a tuple of month names in order:
-MONTHS = (
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-)
 
 while True:
     print("How many birthdays shall i generate?(Max 100)")
     response = input("> ")
     if response.isdecimal() and (0 < int(response) <= 100):
-        num_B_days = int(response)
+        num_of_days = int(response)
         break
 print()
 
 # Generate and display the birthdays:
-print("Here are", num_B_days, "birthdays:")
-birthdays = get_birthday(num_B_days)
+print("Here are", num_of_days, "birthdays:")
+birthdays = get_birthday(num_of_days)
 for i, birthday in enumerate(birthdays):
     if i != 0:
         # To display a comma for each birthday after the first birthday
@@ -85,7 +88,7 @@ else:
 print()
 
 # Run through 100,000 simulations:
-print(f"generating {num_B_days} random birthdays 100,000 times.....")
+print(f"generating {num_of_days} random birthdays 100,000 times.....")
 input("Press Enter to begin....")
 
 print("Let's run another 100,000 simulations.")
@@ -94,7 +97,7 @@ for i in range(100_000):
     # report on the progress every 10,000 simulations:
     if 1 % 10_000 == 0:
         print(i, "simulation run....")
-    birthdays = get_birthday(num_B_days)
+    birthdays = get_birthday(num_of_days)
     if get_match(birthdays) != None:
         sim_match = sim_match + 1
 print("100,000 simulations run.")
@@ -102,8 +105,7 @@ print("100,000 simulations run.")
 # display simulation results:
 probability = round(sim_match / 100_000 * 100, 2)
 print(
-    f"Out of 100,000 simulations of {num_B_days} people there was a \n"
+    f"Out of 100,000 simulations of {num_of_days} people there was a \n"
     f"matching birthday in that group {sim_match} times. This means \n"
-    f"that {num_B_days} people have a {probability} % chance of having a matching birthday in their group. \n"
-    f"That's probably more than you would think!"
-)
+    f"that {num_of_days} people have a {probability} % chance of having a matching birthday in their group. \n"
+    f"That's probably more than you would think!")
