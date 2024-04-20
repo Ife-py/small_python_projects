@@ -17,9 +17,9 @@ MONTHS = (
 )
 
 
-def get_birthday(number_of_birthdays:int):
+def get_birthday(number_of_birthdays: int):
     """enter an integer for the amount of birthdays to be simulated"""
-    
+
     """Returns a list of number random date objects for birthdays."""
     birthdays = []
     for i in range(number_of_birthdays):
@@ -108,4 +108,5 @@ print(
     f"Out of 100,000 simulations of {num_of_days} people there was a \n"
     f"matching birthday in that group {sim_match} times. This means \n"
     f"that {num_of_days} people have a {probability} % chance of having a matching birthday in their group. \n"
-    f"That's probably more than you would think!")
+    f"That's probably more than you would think!"
+)
